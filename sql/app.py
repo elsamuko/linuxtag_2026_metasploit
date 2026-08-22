@@ -64,5 +64,38 @@ def login():
     conn.close()
     return render_template_string(HTML_TEMPLATE, message=message)
 
+# VULNERABILITY: Broken Access Control (Privilege Escalation / Mass Assignment)
+@app.route('/update_user', methods=['POST'])
+def update_user():
+    print("update_user called")
+          
+    # Only checks if authentication exists, not if the user has authorization/admin rights
+    if 'user' not in session:
+        print("Unauthorized: Please log in first.")
+        return "Unauthorized: Please log in first.", 401
+
+    target_user = request.form.get('username', session['user'])
+    is_admin = request.form.get('admin')  # Accepts 0 or 1 directly from client input
+
+    if is_admin is None:
+        return "Missing 'admin' parameter.", 400
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Flawed logic: Any authenticated user can set the 'is_admin' status of any account
+    query = f"UPDATE users SET is_admin = {is_admin} WHERE username = '{target_user}'"
+    
+    try:
+        cursor.execute(query)
+        conn.commit()
+        message = f"Successfully updated '{target_user}' admin status to {is_admin}. (Query: {query})"
+    except Exception as e:
+        message = f"Database Error: {str(e)}"
+    finally:
+        conn.close()
+
+    return message
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5005)

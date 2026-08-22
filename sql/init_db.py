@@ -9,13 +9,14 @@ cursor = conn.cursor()
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY,
-        username TEXT NOT NULL,
+        username TEXT NOT NULL UNIQUE,
         password TEXT NOT NULL
     )
 ''')
 
 # Insert a dummy user
-cursor.execute("INSERT INTO users (username, password) VALUES ('admin', 'SuperSecretPassword123')")
+cursor.execute("INSERT OR REPLACE INTO users (username, password) VALUES ('admin', 'SuperSecretPassword123')")
+cursor.execute("INSERT OR REPLACE INTO users (username, password) VALUES ('user', 'notadmin')")
 
 conn.commit()
 conn.close()
