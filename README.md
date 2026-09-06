@@ -22,9 +22,8 @@ search path:auxiliary/scanner ssl
 # search type:auxiliary tls -S scanner
 use auxiliary/scanner/ssl/ssl_version
 options
-set RHOSTS www.google.com
-set RPORT 443
-set SSLVersion TLSv1.2
+set RHOSTS localhost
+set RPORT 5005
 set VERBOSE 1
 set ConnectTimeout 20
 run
