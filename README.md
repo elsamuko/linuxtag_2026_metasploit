@@ -59,6 +59,13 @@ run
 ## Exploits
 
 ```bash
+sudo apt install docker.io util-linux-extra
+sudo usermod -aG docker $USER
+newgrp docker
+docker run hello-world
+```
+
+```bash
 docker run -d --net=host --name metasploitable2 tleemcjr/metasploitable2 /bin/bash -c "/bin/services.sh && tail -f /dev/null"
 ```
 
