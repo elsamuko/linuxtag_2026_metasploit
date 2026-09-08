@@ -43,6 +43,8 @@ class MetasploitModule < Msf::Auxiliary
         },
       })
 
+      # print_line(res.body)
+
       if res && res.body.include?("Welcome back, admin!")
         print_good("Login successful")
         cookies = res.get_cookies_parsed

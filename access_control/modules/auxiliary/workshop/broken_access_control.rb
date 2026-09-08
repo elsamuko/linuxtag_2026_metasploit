@@ -69,6 +69,7 @@ class MetasploitModule < Msf::Auxiliary
 
       if !(res && res.code == 200)
         print_error("Update failed")
+        print_error(res.body)
         return
       end
 
