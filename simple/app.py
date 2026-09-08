@@ -7,21 +7,26 @@ import argparse
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def home():
     return "<h1>Home Page</h1><p>Welcome to the HTTPS Flask App!</p><a href='/about'>About</a> | <a href='/contact'>Contact</a>"
+
 
 @app.route("/about")
 def about():
     return "<h1>About Page</h1><p>This is a custom 3-page Flask application.</p><a href='/'>Home</a> | <a href='/contact'>Contact</a>"
 
+
 @app.route("/secret/")
 def secret():
     return "Unlisted secret page"
 
+
 @app.route("/contact")
 def contact():
     return "<h1>Contact Page</h1><p>Get in touch with us here.</p><a href='/'>Home</a> | <a href='/about'>About</a>"
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run the Flask app.")
