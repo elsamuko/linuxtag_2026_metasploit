@@ -49,9 +49,12 @@ def login():
     
     # CRITICAL VULNERABILITY: Direct string formatting allows SQL Injection
     query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
+    data = {}
+    # query = "SELECT * FROM users WHERE username = %(username)s AND password = %(password)s"
+    # data = {"username": username, "password": password}
     
     try:
-        cursor.execute(query)
+        cursor.execute(query, data)
         user = cursor.fetchone()
         if user:
             session['user'] = user['username']
@@ -73,6 +76,11 @@ def update_user():
     if 'user' not in session:
         print("Unauthorized: Please log in first.")
         return "Unauthorized: Please log in first.", 401
+
+    # admin check
+    # if session['user'] != "admin":
+    #     print("Only admin is allowed to call update_user.")
+    #     return "Only admin is allowed to call update_user.", 401
 
     target_user = request.form.get('username', session['user'])
     is_admin = request.form.get('admin')  # Accepts 0 or 1 directly from client input
