@@ -9,13 +9,19 @@ curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/t
   ./msfinstall
 ```
 
-* https://owasp.org/Top10/2025/
-    * A01:2025 - Broken Access Control
-    * A05:2025 - Injection
-
 ## Usage
 
-### Information Gathering -- Scanner
+* Start: `msfconsole -q`
+* Help: `help`
+* Search: `search type:auxiliary ssl`
+* Use: `use auxiliary/scanner/http/cert`
+* Options:
+  * `options`
+  * `set RHOSTS target`
+  * `setg`
+* Run: `run`
+
+## Information Gathering -- Scanner
 
 ```bash
 search path:auxiliary/scanner ssl
@@ -52,9 +58,15 @@ run
 * gobuster/ffuf
 * sqlmap
 
-## SQL Injection
+## Scripting
 
-## Access Control
+* https://owasp.org/Top10/2025/
+    * A01:2025 - Broken Access Control
+    * A05:2025 - Injection
+
+### SQL Injection
+
+### Access Control
 
 ## Exploits
 
