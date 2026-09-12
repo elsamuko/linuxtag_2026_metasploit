@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# simple app with authentication
+# https://dev.mysql.com/doc/connector-python/en/
 
 import sqlite3
 from flask import Flask, request, render_template_string, session
