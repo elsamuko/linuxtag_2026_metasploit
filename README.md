@@ -57,6 +57,8 @@ run
 * nmap
 * gobuster/ffuf
 * sqlmap
+* https://www.kali.org/tools/
+* F12 Developer Tools
 
 ## Scripting
 
