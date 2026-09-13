@@ -90,3 +90,14 @@ set RPORT 21
 set LHOST localhost
 run
 ```
+
+### Meterpreter
+
+```bash
+help
+ps
+sysinfo
+cd
+ls
+pwd
+```
