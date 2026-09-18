@@ -50,6 +50,12 @@ set RPORT 5005
 set SSL false
 run
 ```
+
+On error message, clear db for host:
+```bash
+hosts -d 127.0.0.1
+```
+
 * bigger wordlists at https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content
 
 ### Alternatives
@@ -80,6 +86,7 @@ docker run hello-world
 ```
 
 ```bash
+# docker rm -vf $(docker ps -aq)
 docker run -d --net=host --name metasploitable2 tleemcjr/metasploitable2 /bin/bash -c "/bin/services.sh && tail -f /dev/null"
 ```
 
