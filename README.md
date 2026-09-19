@@ -26,7 +26,9 @@ curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/t
 ## Information Gathering -- Scanner
 
 ```bash
+cd simple
 openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365 -subj "/CN=localhost"
+./server.py
 ```
 
 ```bash
@@ -34,11 +36,17 @@ search path:auxiliary/scanner ssl
 # search type:auxiliary tls -S scanner
 use auxiliary/scanner/ssl/ssl_version
 options
+advanced # more options
 set RHOSTS localhost
 set RPORT 5005
 set VERBOSE 1
 set ConnectTimeout 20
 run
+```
+
+```bash
+sudo apt install python3-flask
+# python3 -m pip install flask
 ```
 
 ```bash
