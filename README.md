@@ -1,5 +1,7 @@
 # Metasploit
 
+https://github.com/elsamuko/linuxtag_2026_metasploit
+schnieptroete
 ## Installation
 
 https://docs.metasploit.com/docs/using-metasploit/getting-started/nightly-installers.html
@@ -22,6 +24,10 @@ curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/t
 * Run: `run`
 
 ## Information Gathering -- Scanner
+
+```bash
+openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365 -subj "/CN=localhost"
+```
 
 ```bash
 search path:auxiliary/scanner ssl
