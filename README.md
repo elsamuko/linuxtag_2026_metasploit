@@ -1,7 +1,5 @@
 # Metasploit
 
-https://github.com/elsamuko/linuxtag_2026_metasploit
-schnieptroete
 ## Installation
 
 https://docs.metasploit.com/docs/using-metasploit/getting-started/nightly-installers.html
